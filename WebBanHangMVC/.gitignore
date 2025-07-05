@@ -2,7 +2,6 @@
 .vs/
 *.user
 *.suo
-appsetting.Development.json
 appsettings.Development.json
 
 
