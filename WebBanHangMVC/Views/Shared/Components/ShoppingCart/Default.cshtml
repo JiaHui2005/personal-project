@@ -1,0 +1,43 @@
+﻿@model int
+<style>
+    .cart-icon {
+    position: relative;
+    display: inline-block;
+    color: #333;
+    font-size: 22px;
+    text-decoration: none;
+    padding: 6px;
+    transition: color 0.2s ease-in-out;
+}
+
+.cart-icon:hover {
+    color: #0d6efd; /* xanh Bootstrap */
+}
+
+.cart-icon i {
+    font-size: 24px;
+}
+
+.cart-icon .badge {
+    position: absolute;
+    top: 0px;
+    right: -8px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-weight: bold;
+    box-shadow: 0 0 0 1px white;
+    transform: translate(50%, -50%);
+}
+
+</style>
+
+<a class="cart-icon" href="@Url.Action("Index", "Cart")">
+    <i class="bi bi-cart3"></i>
+    @if (Model > 0)
+    {
+            <span class="badge">@Model</span>
+    }
+</a>

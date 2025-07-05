@@ -1,0 +1,713 @@
+﻿@{
+    ViewData["Title"] = "Danh Mục Sản Phẩm";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+<link rel="stylesheet" href="@Url.Content("~/css/HomeIndex.css")" />
+
+<div class="banner">
+    <div class="container">
+        <div class="row g-3"> 
+            <div class="col-lg-8 col-md-7 col-12">
+                <div class="d-flex flex-column banner-left">
+                    <div class="top-banner position-relative">
+                        <img src="/Image/banner1.jpg" alt="Banner chính" class="banner-image rounded shadow-sm" />
+                        <img src="/Image/banner6.jpg" alt="Banner chính" class="banner-image rounded shadow-sm" />
+                        <img src="/Image/banner7.jpg" alt="Banner chính" class="banner-image rounded shadow-sm" />
+                    </div>
+                    <div class="bottom-banner"> 
+                        <img src="/Image/banner5.jpg" alt="Banner phụ" class="rounded shadow-sm h-100" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-5 col-12">
+                <div class="d-flex flex-column h-100 justify-content-between gap-3">
+                    <img src="/Image/banner2.webp" alt="PC Gaming" class="rounded w-100 h-100 banner-small shadow-sm" />
+                    <img src="/Image/banner3.webp" alt="PC AMD Gaming" class="rounded w-100 h-100 banner-small shadow-sm" />
+                    <img src="/Image/banner3.webp" alt="PC Workstation" class="rounded w-100 h-100 banner-small shadow-sm" />
+                    <img src="/Image/banner4.jpg" alt="PC Văn Phòng" class="rounded w-100 h-100 banner-small shadow-sm" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="promo-container">
+    <div class="container">
+        <div class="promo-title">
+            <i class="fas fa-bolt"></i> KHUYẾN MÃI SHOCK NHẤT <i class="fas fa-fire"></i>
+        </div>
+        <div class="promo-slider-wrapper">
+            <div class="promo-slider" id="promoSlider">
+                <div class="promo-item">
+                    <img src="/Image/test.jpg" alt="PC Faster Gaming">
+                    <div class="product-name">PC Faster Gaming 10400F - RTX 3050 6GB (All New - Bộ hoàn)</div>
+                    <div class="price-wrapper">
+                        <div class="old-price">11.990.000đ</div>
+                        <div class="new-price">9.990.000đ</div>
+                    </div>
+                    <div class="discount">-17%</div>
+                    <button class="btn-add-cart" onclick="addToCart(this, 1)">
+                        <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                    </button>
+                </div>
+                <div class="promo-item">
+                    <img src="/Image/test.jpg" alt="PC Best for Gaming">
+                    <div class="product-name">PC Best for Gaming 1660 Super 6GB(Tất cả linh kiện)</div>
+                    <div class="price-wrapper">
+                        <div class="old-price">9.990.000đ</div>
+                        <div class="new-price">9.990.000đ</div>
+                    </div>
+                    <div class="discount">-17%</div>
+                    <button class="btn-add-cart" onclick="addToCart(this, 2)">
+                        <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                    </button>
+                </div>
+                <div class="promo-item">
+                    <img src="/Image/test.jpg" alt="PC Chơi Game Hiệu Suất">
+                    <div class="product-name">PC Chơi Game Hiệu Suất RTX 3060 12GB - i2400F (All...)</div>
+                    <div class="price-wrapper">
+                        <div class="old-price">15.280.000đ</div>
+                        <div class="new-price">15.280.000đ</div>
+                    </div>
+                    <div class="discount">-20%</div>
+                    <button class="btn-add-cart" onclick="addToCart(this, 3)">
+                        <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                    </button>
+                </div>
+                <div class="promo-item">
+                    <img src="/Image/test.jpg" alt="PC Gaming Performance">
+                    <div class="product-name">PC Gaming Performance RTX 4060 8GB - i52400F (Tòan bộ...)</div>
+                    <div class="price-wrapper">
+                        <div class="old-price">16.280.000đ</div>
+                        <div class="new-price">16.280.000đ</div>
+                    </div>
+                    <div class="discount">-26%</div>
+                    <button class="btn-add-cart" onclick="addToCart(this, 4)">
+                        <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                    </button>
+                </div>
+                <div class="promo-item">
+                    <img src="/Image/test.jpg" alt="PC Maximum Gaming">
+                    <div class="product-name">PC Maximum Gaming 12400F - RTX 3070 8GB (All New - Bộ...)</div>
+                    <div class="price-wrapper">
+                        <div class="old-price">17.680.000đ</div>
+                        <div class="new-price">17.680.000đ</div>
+                    </div>
+                    <div class="discount">-26%</div>
+                    <button class="btn-add-cart" onclick="addToCart(this, 5)">
+                        <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                    </button>
+                </div>
+                <div class="promo-item">
+                    <img src="/Image/test.jpg" alt="PC Extra Gaming">
+                    <div class="product-name">PC Extra Gaming 13400F - RTX 3080 10GB (All New)</div>
+                    <div class="price-wrapper">
+                        <div class="old-price">22.990.000đ</div>
+                        <div class="new-price">19.990.000đ</div>
+                    </div>
+                    <div class="discount">-13%</div>
+                    <button class="btn-add-cart" onclick="addToCart(this, 6)">
+                        <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                    </button>
+                </div>
+                <div class="promo-item">
+                    <img src="/Image/test.jpg" alt="PC Ultimate Gaming">
+                    <div class="product-name">PC Ultimate Gaming 13900F - RTX 4090 24GB</div>
+                    <div class="price-wrapper">
+                        <div class="old-price">45.990.000đ</div>
+                        <div class="new-price">39.990.000đ</div>
+                    </div>
+                    <div class="discount">-13%</div>
+                    <button class="btn-add-cart" onclick="addToCart(this, 7)">
+                        <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="promo-controls">
+            <button class="btn" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+            <button class="btn" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="promo-see-all">
+            <a href="@Url.Action("Index", "Promotions")" class="btn b-w">Xem tất cả <i class="fas fa-fire"></i> KHUYẾN MÃI SHOCK NHẤT <i class="fas fa-bolt"></i></a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="sidebar">
+                <h5><i class="fa-solid fa-bars"></i> Danh Mục</h5>
+                <ul id="category-menu">
+                    <li><a href="@Url.Action("Index", "Products", new { category = "PCGaming" })"><i class="fa-solid fa-gamepad"></i> PC Gaming</a></li>
+                    <li><a href="@Url.Action("Index", "Products", new { category = "PCVanPhong" })"><i class="fa-solid fa-briefcase"></i> PC Văn Phòng</a></li>
+                    <li><a href="@Url.Action("Index", "Products", new { category = "PCAMDGaming" })"><i class="fa-solid fa-laptop"></i> PC AMD GAMING</a></li>
+                    <li><a href="@Url.Action("Index", "Products", new { category = "PCWorkstation" })"><i class="fa-solid fa-microchip"></i> PC Workstation</a></li>
+                    <li><a href="@Url.Action("Index", "Products", new { category = "PCDoHoa" })"><i class="fa-solid fa-pen-ruler"></i> PC Đồ Họa</a></li>
+                    <li><a href="@Url.Action("Index", "Products", new { category = "LinhKien" })"><i class="fa-solid fa-memory"></i> Linh kiện máy tính</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-lg-9">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+                <div class="col">
+                    <div class="product-card">
+                        <a href="@Url.Action("Info", "Product")" style="text-decoration: none; color: inherit;">
+                            <div class="discount">Giảm 10%</div>
+                        <div class="product-image-container">
+                             <img src="\Image\test.jpg" alt="PC Gaming">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">PC Gaming Intel Core i5-12400F | RAM 16GB | RTX 3060</div>
+                            <div class="price-wrapper">
+                                <div class="new-price">13.500.000đ</div>
+                                <div class="old-price">15.000.000đ</div>
+                            </div>
+                        </div>
+                        </a> 
+                        <button class="btn btn-add-cart" onclick="addToCart(this, 1)">
+                            <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="product-card">
+                        <a href="@Url.Action("Info", "Product")" style="text-decoration: none; color: inherit;">
+                            <div class="discount">Giảm 10%</div>
+                        <div class="product-image-container">
+                             <img src="\Image\test.jpg" alt="PC Gaming">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">PC Gaming Intel Core i5-12400F | RAM 16GB | RTX 3060</div>
+                            <div class="price-wrapper">
+                                <div class="new-price">13.500.000đ</div>
+                                <div class="old-price">15.000.000đ</div>
+                            </div>
+                        </div>
+                        </a> 
+                        <button class="btn btn-add-cart" onclick="addToCart(this, 1)">
+                            <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ
+                        </button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="product-card">
+                        <a href="@Url.Action("Info", "Product")" style="text-decoration: none; color: inherit;">
+                            <div class="discount">Giảm 10%</div>
+                        <div class="product-image-container">
+                             <img src="\Image\test.jpg" alt="PC Gaming">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">PC Gaming Intel Core i5-12400F | RAM 16GB | RTX 3060</div>
+                            <div class="price-wrapper">
+                                <div class="new-price">13.500.000đ</div>
+                                <div class="old-price">15.000.000đ</div>
+                            </div>
+                        </div>
+                        </a> 
+                        <button class="btn btn-add-cart" onclick="addToCart(this, 1)">
+                            <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ
+                        </button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="product-card">
+                        <a href="@Url.Action("Info", "Product")" style="text-decoration: none; color: inherit;">
+                            <div class="discount">Giảm 10%</div>
+                        <div class="product-image-container">
+                             <img src="\Image\test.jpg" alt="PC Gaming">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">PC Gaming Intel Core i5-12400F | RAM 16GB | RTX 3060</div>
+                            <div class="price-wrapper">
+                                <div class="new-price">13.500.000đ</div>
+                                <div class="old-price">15.000.000đ</div>
+                            </div>
+                        </div>
+                        </a> 
+                        <button class="btn btn-add-cart" onclick="addToCart(this, 1)">
+                            <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ
+                        </button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="product-card">
+                        <a href="@Url.Action("Info", "Product")" style="text-decoration: none; color: inherit;">
+                            <div class="discount">Giảm 10%</div>
+                        <div class="product-image-container">
+                             <img src="\Image\test.jpg" alt="PC Gaming">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">PC Gaming Intel Core i5-12400F | RAM 16GB | RTX 3060</div>
+                            <div class="price-wrapper">
+                                <div class="new-price">13.500.000đ</div>
+                                <div class="old-price">15.000.000đ</div>
+                            </div>
+                        </div>
+                        </a> 
+                        <button class="btn btn-add-cart" onclick="addToCart(this, 1)">
+                            <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ
+                        </button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="product-card">
+                        <a href="@Url.Action("Info", "Product")" style="text-decoration: none; color: inherit;">
+                            <div class="discount">Giảm 10%</div>
+                        <div class="product-image-container">
+                             <img src="\Image\test.jpg" alt="PC Gaming">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">PC Gaming Intel Core i5-12400F | RAM 16GB | RTX 3060</div>
+                            <div class="price-wrapper">
+                                <div class="new-price">13.500.000đ</div>
+                                <div class="old-price">15.000.000đ</div>
+                            </div>
+                        </div>
+                        </a> 
+                        <button class="btn btn-add-cart" onclick="addToCart(this, 1)">
+                            <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="gaming-gear-container rounded mt-4 p-4 bg-light border border-dark border-1">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="mb-0"> <i class="fa-solid fa-gamepad m-2"></i>Gaming Gear</h2>
+      <div class="arrows">
+        <i class="fas fa-chevron-left me-2" onclick="moveSlide(-1, 'gamingGearGrid')"></i>
+        <i class="fas fa-chevron-right" onclick="moveSlide(1, 'gamingGearGrid')"></i>
+      </div>
+    </div>
+
+    <div class="row" id="gamingGearGrid">
+      <!-- Sản phẩm 1 -->
+      <div class="col-lg-4 col-md-6 col-12 mb-4">
+        <div class="gaming-gear-item d-flex p-3 border bg-white rounded shadow-sm align-items-center h-100">
+          <div class="gear-thumb rounded me-3">
+            <img src="/Image/gear.png" alt="AULA F75 Glacier Blue" class="img-fluid rounded" width="80" height="80">
+          </div>
+          <div class="gear-info flex-grow-1">
+            <div class="fw-semibold small">AULA F75 Glacier Blue</div>
+            <div class="price-wrapper small my-1">
+              <span class="text-danger fw-bold">1.000.000đ</span>
+              <span class="text-muted text-decoration-line-through ms-2">1.250.000đ</span>
+            </div>
+            <span class="badge bg-danger-subtle text-danger small">-20%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sản phẩm 2 -->
+      <div class="col-lg-4 col-md-6 col-12 mb-4">
+        <div class="gaming-gear-item d-flex p-3 border bg-white rounded shadow-sm align-items-center h-100">
+          <div class="gear-thumb rounded me-3">
+            <img src="/Image/gear.png" alt="AULA AU75 Purple Red" class="img-fluid rounded" width="80" height="80">
+          </div>
+          <div class="gear-info flex-grow-1">
+            <div class="fw-semibold small">AULA AU75 Purple Red</div>
+            <div class="price-wrapper small my-1">
+              <span class="text-danger fw-bold">1.050.000đ</span>
+              <span class="text-muted text-decoration-line-through ms-2">1.300.000đ</span>
+            </div>
+            <span class="badge bg-danger-subtle text-danger small">-19%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sản phẩm 3 -->
+      <div class="col-lg-4 col-md-6 col-12 mb-4">
+        <div class="gaming-gear-item d-flex p-3 border bg-white rounded shadow-sm align-items-center h-100">
+          <div class="gear-thumb rounded me-3">
+            <img src="/Image/gear.png" alt="AULA F75 Black Gradient" class="img-fluid rounded" width="80" height="80">
+          </div>
+          <div class="gear-info flex-grow-1">
+            <div class="fw-semibold small">AULA F75 Black Gradient</div>
+            <div class="price-wrapper small my-1">
+              <span class="text-danger fw-bold">1.100.000đ</span>
+              <span class="text-muted text-decoration-line-through ms-2">1.400.000đ</span>
+            </div>
+            <span class="badge bg-danger-subtle text-danger small">-21%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sản phẩm 4 -->
+      <div class="col-lg-4 col-md-6 col-12 mb-4">
+        <div class="gaming-gear-item d-flex p-3 border bg-white rounded shadow-sm align-items-center h-100">
+          <div class="gear-thumb rounded me-3">
+            <img src="/Image/gear.png" alt="AULA S98 Pro" class="img-fluid rounded" width="80" height="80">
+          </div>
+          <div class="gear-info flex-grow-1">
+            <div class="fw-semibold small">AULA S98 Pro</div>
+            <div class="price-wrapper small my-1">
+              <span class="text-danger fw-bold">1.300.000đ</span>
+              <span class="text-muted text-decoration-line-through ms-2">1.600.000đ</span>
+            </div>
+            <span class="badge bg-danger-subtle text-danger small">-19%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sản phẩm 5 -->
+      <div class="col-lg-4 col-md-6 col-12 mb-4">
+        <div class="gaming-gear-item d-flex p-3 border bg-white rounded shadow-sm align-items-center h-100">
+          <div class="gear-thumb rounded me-3">
+            <img src="/Image/gear.png" alt="AULA F75 Black Gold" class="img-fluid rounded" width="80" height="80">
+          </div>
+          <div class="gear-info flex-grow-1">
+            <div class="fw-semibold small">AULA F75 Black Gold</div>
+            <div class="price-wrapper small my-1">
+              <span class="text-danger fw-bold">1.050.000đ</span>
+              <span class="text-muted text-decoration-line-through ms-2">1.350.000đ</span>
+            </div>
+            <span class="badge bg-danger-subtle text-danger small">-22%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sản phẩm 6 -->
+      <div class="col-lg-4 col-md-6 col-12 mb-4">
+        <div class="gaming-gear-item d-flex p-3 border bg-white rounded shadow-sm align-items-center h-100">
+          <div class="gear-thumb rounded me-3">
+            <img src="/Image/gear.png" alt="AULA AU75 Golden" class="img-fluid rounded" width="80" height="80">
+          </div>
+          <div class="gear-info flex-grow-1">
+            <div class="fw-semibold small">AULA AU75 Golden</div>
+            <div class="price-wrapper small my-1">
+              <span class="text-danger fw-bold">1.000.000đ</span>
+              <span class="text-muted text-decoration-line-through ms-2">1.280.000đ</span>
+            </div>
+            <span class="badge bg-danger-subtle text-danger small">-22%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sản phẩm 7 -->
+      <div class="col-lg-4 col-md-6 col-12 mb-4">
+        <div class="gaming-gear-item d-flex p-3 border bg-white rounded shadow-sm align-items-center h-100">
+          <div class="gear-thumb rounded me-3">
+            <img src="/Image/gear.png" alt="AULA F93 Grey Wood" class="img-fluid rounded" width="80" height="80">
+          </div>
+          <div class="gear-info flex-grow-1">
+            <div class="fw-semibold small">AULA F93 Grey Wood</div>
+            <div class="price-wrapper small my-1">
+              <span class="text-danger fw-bold">1.150.000đ</span>
+              <span class="text-muted text-decoration-line-through ms-2">1.450.000đ</span>
+            </div>
+            <span class="badge bg-danger-subtle text-danger small">-21%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sản phẩm 8 -->
+      <div class="col-lg-4 col-md-6 col-12 mb-4">
+        <div class="gaming-gear-item d-flex p-3 border bg-white rounded shadow-sm align-items-center h-100">
+          <div class="gear-thumb rounded me-3">
+            <img src="/Image/gear.png" alt="AULA F75 MAX Black" class="img-fluid rounded" width="80" height="80">
+          </div>
+          <div class="gear-info flex-grow-1">
+            <div class="fw-semibold small">AULA F75 MAX Black</div>
+            <div class="price-wrapper small my-1">
+              <span class="text-danger fw-bold">1.350.000đ</span>
+              <span class="text-muted text-decoration-line-through ms-2">1.700.000đ</span>
+            </div>
+            <span class="badge bg-danger-subtle text-danger small">-21%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sản phẩm 9 -->
+      <div class="col-lg-4 col-md-6 col-12 mb-4">
+        <div class="gaming-gear-item d-flex p-3 border bg-white rounded shadow-sm align-items-center h-100">
+          <div class="gear-thumb rounded me-3">
+            <img src="/Image/gear.png" alt="AULA F75 White Gradient" class="img-fluid rounded" width="80" height="80">
+          </div>
+          <div class="gear-info flex-grow-1">
+            <div class="fw-semibold small">AULA F75 White Gradient</div>
+            <div class="price-wrapper small my-1">
+              <span class="text-danger fw-bold">1.350.000đ</span>
+              <span class="text-muted text-decoration-line-through ms-2">1.800.000đ</span>
+            </div>
+            <span class="badge bg-danger-subtle text-danger small">-25%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Container tin tức -->
+<div class="container my-4 bg-light border border-dark border-1 rounded">
+    <div class="news-section rounded p-4 w-100">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="mb-0"> <i class="fa-solid fa-newspaper"></i> Tin tức</h2>
+            <a href=@Url.Action("Index","News") id="all-news" class="text-decoration-none">Xem tất cả</a>
+        </div>
+
+        <div class="row">
+            <!-- Tin tức nổi bật (bên trái) -->
+            <div class="col-md-8" id="main-news">
+                <!-- Tin tức đầu tiên sẽ vào đây -->
+            </div>
+
+            <!-- 3 tin nhỏ bên phải -->
+            <div class="col-md-4 d-flex flex-column gap-3" id="side-news">
+                <!-- Tin tức 2, 3, 4 sẽ vào đây -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Container đánh giá và nhận xét sản phẩm -->
+<div class="contarner my-4 bg-light border border-dark border-1 rounded">
+    <div class="comment rounded p-4 w-100">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="mb-2"> <i class="fa-solid fa-comments"></i> Đánh giá</h2>
+            <div class="arrows">
+                <i class="fas fa-chevron-left me-2" onclick="moveSlide(-1, 'gamingGearGrid')"></i>
+                <i class="fas fa-chevron-right" onclick="moveSlide(1, 'gamingGearGrid')"></i>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-12 col-md-6 col-lg-4 mb-3">
+                <div class="comment border border-1 border-dark rounded p-3 bg-white">
+                    <div class="d-flex flex-column">
+                        <!-- Avatar -->
+                        <div class="text-center me-md-3 mb-3 mb-md-0" style="min-width: 80px;">
+                            <img src="~/Image/test.jpg" alt="Avatar" class="rounded-circle img-fluid" style="width: 80px; height: 80px; object-fit: cover;">
+                            <small class="d-block mt-2 fw-bold">Võ Gia Huy</small>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <div class="text-muted small">23/2/2025</div>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <a href="#" class="text-decoration-none text-dark fw-semibold">PC Gaming Intel Core i5-12400F | RAM 16GB | RTX 3060</a>
+                            </div>
+                            <div class="card-content bg-dark text-white rounded p-3">
+                                Sản phẩm ok, tốt, giá ổn!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-3">
+                <div class="comment border border-1 border-dark rounded p-3 bg-white">
+                    <div class="d-flex flex-column">
+                        <!-- Avatar -->
+                        <div class="text-center me-md-3 mb-3 mb-md-0" style="min-width: 80px;">
+                            <img src="~/Image/test.jpg" alt="Avatar" class="rounded-circle img-fluid" style="width: 80px; height: 80px; object-fit: cover;">
+                            <small class="d-block mt-2 fw-bold">Võ Gia Huy</small>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <div class="text-muted small">23/2/2025</div>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <a href="#" class="text-decoration-none text-dark fw-semibold">PC Gaming Intel Core i5-12400F | RAM 16GB | RTX 3060</a>
+                            </div>
+                            <div class="card-content bg-dark text-white rounded p-3">
+                                Sản phẩm ok, tốt, giá ổn!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-3">
+                <div class="comment border border-1 border-dark rounded p-3 bg-white">
+                    <div class="d-flex flex-column">
+                        <!-- Avatar -->
+                        <div class="text-center me-md-3 mb-3 mb-md-0" style="min-width: 80px;">
+                            <img src="~/Image/test.jpg" alt="Avatar" class="rounded-circle img-fluid" style="width: 80px; height: 80px; object-fit: cover;">
+                            <small class="d-block mt-2 fw-bold">Võ Gia Huy</small>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <div class="text-muted small">23/2/2025</div>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <a href="#" class="text-decoration-none text-dark fw-semibold">PC Gaming Intel Core i5-12400F | RAM 16GB | RTX 3060</a>
+                            </div>
+                            <div class="card-content bg-dark text-white rounded p-3">
+                                Sản phẩm ok, tốt, giá ổn!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+        <script>
+            let slideIndex = 0;
+            const slider = document.getElementById('promoSlider');
+            const items = document.querySelectorAll('.promo-item');
+            const itemsPerPage = 5;
+            const totalItems = items.length;
+
+            function moveSlide(direction) {
+                const maxIndex = totalItems - itemsPerPage; // Số bước tối đa
+                slideIndex += direction;
+                if (slideIndex < 0) slideIndex = 0;
+                if (slideIndex > maxIndex) slideIndex = maxIndex;
+                updateSlider();
+            }
+
+            function updateSlider() {
+                const itemWidth = 100 / itemsPerPage; // Chiều rộng mỗi sản phẩm (%)
+                const offset = -slideIndex * itemWidth; // Tính offset dựa trên slideIndex
+                slider.style.transform = `translateX(${offset}%)`;
+            }
+
+            // Khởi tạo slider
+            updateSlider();
+
+            function addToCart(button, productId) {
+                button.disabled = true;
+                button.innerHTML = '<i class="fas fa-check"></i> Đã thêm';
+                button.classList.add('added');
+                console.log(`Đã thêm sản phẩm ID: ${productId} vào giỏ hàng.`);
+                setTimeout(() => {
+                    button.disabled = false;
+                    button.innerHTML = '<i class="fas fa-shopping-cart"></i> Thêm vào giỏ';
+                    button.classList.remove('added');
+                }, 2000);
+            }
+
+            document.addEventListener("DOMContentLoaded", function() {
+                const currentUrl = new URL(window.location.href);
+                const category = currentUrl.searchParams.get("category");
+                if (category) {
+                    const activeLink = document.querySelector(`#category-menu a[href*="category=${category}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+
+    const apiKey = "60d6160229f94634b0f32b45d38702d3";
+
+    // Ưu tiên bài viết cụ thể
+    const primaryUrl = `https://newsapi.org/v2/everything?q=intel+amd&language=vi&pageSize=6&sortBy=publishedAt&apiKey=${apiKey}`;
+
+    // Nếu không đủ bài → dùng fallback URL
+    const fallbackUrl = `https://newsapi.org/v2/top-headlines?category=NIVIDIA&language=vi&pageSize=6&apiKey=${apiKey}`;
+
+    document.addEventListener("DOMContentLoaded", async () => {
+        let articles = [];
+
+        try {
+            const res = await fetch(primaryUrl);
+            const data = await res.json();
+            articles = data.articles || [];
+
+            // Nếu không đủ 4 bài → gọi backup
+            if (articles.length < 4) {
+                const res2 = await fetch(fallbackUrl);
+                const data2 = await res2.json();
+                articles = articles.concat(data2.articles.slice(0, 4 - articles.length));
+            }
+
+            if (articles.length === 0) return;
+
+            const mainNews = document.getElementById("main-news");
+            const sideNews = document.getElementById("side-news");
+
+            // Tin chính
+            const main = articles[0];
+            mainNews.innerHTML = `
+                <div class="card h-100 news-featured">
+                    <img src="${main.urlToImage || 'https://via.placeholder.com/800x400'}" class="w-100 rounded" alt="${main.title}">
+                    <div class="card-body">
+                        <h5 class="card-title">${main.title}</h5>
+                        <p class="card-text small text-muted">${main.source.name} - ${new Date(main.publishedAt).toLocaleDateString()}</p>
+                        <a href="${main.url}" target="_blank" class="btn btn-sm btn-primary">Xem chi tiết</a>
+                    </div>
+                </div>
+            `;
+
+            // Các tin bên phải
+                for (let i = 1; i < Math.min(5, articles.length); i++) {
+                const article = articles[i];
+                const item = document.createElement("div");
+                item.className = "card news-item";
+
+                item.innerHTML = `
+                    <div class="row g-0">
+                        <div class="col-4">
+                            <img src="${article.urlToImage || 'https://via.placeholder.com/120'}" class="img-fluid h-100 rounded-start" alt="${article.title}">
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body py-2">
+                                <div class="news-title">${article.title}</div>
+                                <a href="${article.url}" target="_blank" class="btn btn-link btn-sm p-0 mt-1">Xem chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                sideNews.appendChild(item);
+            }
+        } catch (err) {
+            console.error("Lỗi khi tải tin:", err);
+        }
+    });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const images = document.querySelectorAll(".banner-image");
+            let currentIndex = 0;
+
+            function showNextBanner() {
+                images.forEach(img => img.classList.remove("active"));
+                images[currentIndex].classList.add("active");
+
+                currentIndex = (currentIndex + 1) % images.length;
+            }
+
+            // Bắt đầu hiển thị ảnh đầu tiên
+            showNextBanner();
+
+            // Lặp lại sau mỗi 1.5s
+            setInterval(showNextBanner, 2000);
+        });
+
+        </script>
+}

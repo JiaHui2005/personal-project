@@ -1,0 +1,75 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Tin Tức - Double H Shop";
+}
+
+<div class="container">
+    <div class="news-section my-4">
+        <div class="d-flex justify-content-center align-items-center mb-3">
+            <h4 class="mb-0">📰 Tin tức</h4>
+        </div>
+
+        <!-- 3 tin tức ngang hàng -->
+        <div class="row" id="news-list">
+            <!-- Tin tức sẽ được JS chèn vào đây -->
+        </div>
+    </div>
+</div>
+
+<script>
+    const apiKey = "60d6160229f94634b0f32b45d38702d3";
+
+    // API 1: Tin tức về Intel + AMD
+    const url1 = `https://newsapi.org/v2/everything?q=intel+amd&language=vi&pageSize=6&sortBy=publishedAt&apiKey=${apiKey}`;
+
+    // API 2: Tin NVIDIA
+    const url2 = `https://newsapi.org/v2/everything?q=NIVIDIA+OR+RTX&language=vi&pageSize=6&sortBy=publishedAt&apiKey=${apiKey}`;
+
+    // API 3: Tin RTX
+    const url3 = `https://newsapi.org/v2/everything?q=RTX&language=vi&pageSize=6&sortBy=publishedAt&apiKey=${apiKey}`;
+
+    document.addEventListener("DOMContentLoaded", async () => {
+        const newsList = document.getElementById("news-list");
+
+        try {
+            // Gọi cả 2 API song song
+            const [res1, res2, res3] = await Promise.all([fetch(url1), fetch(url2), fetch(url3)]);
+            const data1 = await res1.json();
+            const data2 = await res2.json();
+            const data3 = await res3.json();
+
+            const articles1 = data1.articles || [];
+            const articles2 = data2.articles || [];
+            const articles3 = data3.articles || [];
+
+            // Gộp 2 mảng tin
+            const articles = [...articles1, ...articles2, ...articles3];
+
+            // Hiển thị tất cả
+            articles.forEach(article => {
+                const col = document.createElement("div");
+                col.className = "col-md-4 col-sm-6 mb-3"; // responsive hơn
+
+                col.innerHTML = `
+                    <div class="card h-100">
+                        <img src="${article.urlToImage || 'https://via.placeholder.com/600x400'}"
+                             class="card-img-top"
+                             alt="${article.title}">
+                        <div class="card-body d-flex flex-column">
+                            <h6 class="card-title">${article.title}</h6>
+                            <p class="card-text text-muted small mb-2">
+                                ${article.source.name} - ${new Date(article.publishedAt).toLocaleDateString()}
+                            </p>
+                            <a href="${article.url}" target="_blank" class="btn btn-primary btn-sm mt-auto">Xem chi tiết</a>
+                        </div>
+                    </div>
+                `;
+
+                newsList.appendChild(col);
+            });
+        } catch (err) {
+            console.error("Lỗi khi tải tin tức:", err);
+        }
+    });
+</script>
+

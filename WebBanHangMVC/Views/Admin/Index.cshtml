@@ -1,0 +1,391 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "_AdminLayout";
+}
+
+<div class="container mt-5">
+    <div class="row g-4 mb-5"> @* Added mb-5 for space between widgets and charts *@
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow-sm h-100 analytics-card">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-circle bg-primary-subtle text-primary me-3">
+                            <i class="fas fa-chart-line fa-2x"></i>
+                        </div>
+                        <h5 class="card-title mb-0">Sản phẩm đã bán</h5>
+                    </div>
+                    <div class="text-center">
+                        <p class="card-text display-4 fw-bold text-primary">12,345</p>
+                        <p class="text-muted">Tổng số sản phẩm đã bán trong tháng này</p>
+                    </div>
+                    <a href="/Admin/Products" class="btn btn-sm btn-outline-primary mt-3 align-self-center">
+                        Xem chi tiết sản phẩm <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow-sm h-100 analytics-card">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-circle bg-success-subtle text-success me-3">
+                            <i class="fas fa-dollar-sign fa-2x"></i>
+                        </div>
+                        <h5 class="card-title mb-0">Tổng doanh thu</h5>
+                    </div>
+                    <div class="text-center">
+                        <p class="card-text display-4 fw-bold text-success">1.250.000.000₫</p>
+                        <p class="text-muted">Doanh thu đạt được trong tháng này</p>
+                    </div>
+                    <a href="/Admin/Orders" class="btn btn-sm btn-outline-success mt-3 align-self-center">
+                        Xem chi tiết đơn hàng <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow-sm h-100 analytics-card">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-circle bg-info-subtle text-info me-3">
+                            <i class="fas fa-shopping-basket fa-2x"></i>
+                        </div>
+                        <h5 class="card-title mb-0">Đơn hàng mới</h5>
+                    </div>
+                    <div class="text-center">
+                        <p class="card-text display-4 fw-bold text-info">789</p>
+                        <p class="text-muted">Số đơn hàng mới trong hôm nay</p>
+                    </div>
+                    <a href="/Admin/Orders" class="btn btn-sm btn-outline-info mt-3 align-self-center">
+                        Quản lý đơn hàng <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-lg-6">
+            <div class="card shadow-sm chart-card h-100">
+                <div class="card-header bg-white border-bottom py-3">
+                    <h6 class="m-0 fw-bold text-primary">Sản phẩm bán chạy nhất tháng</h6>
+                </div>
+                <div class="card-body">
+                    <canvas id="productSalesChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card shadow-sm chart-card h-100">
+                <div class="card-header bg-white border-bottom py-3">
+                    <h6 class="m-0 fw-bold text-success">Doanh thu 6 tháng gần nhất</h6>
+                </div>
+                <div class="card-body">
+                    <canvas id="revenueChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Custom styles for analytics cards (from previous response) */
+    .analytics-card {
+        border: none; /* Remove default card border */
+        border-radius: 12px; /* More rounded corners */
+        overflow: hidden; /* Ensure content stays within rounded corners */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .analytics-card:hover {
+        transform: translateY(-5px); /* Lift effect on hover */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important; /* Stronger shadow */
+    }
+
+    .analytics-card .card-body {
+        padding: 1.8rem; /* More internal padding */
+    }
+
+    .icon-circle {
+        width: 65px; /* Larger circle */
+        height: 65px; /* Larger circle */
+        border-radius: 50%; /* Make it a perfect circle */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0; /* Prevent shrinking */
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .analytics-card:hover .icon-circle {
+        transform: scale(1.1); /* Scale icon circle on card hover */
+    }
+
+    /* Dark Mode Specific Styles for Widgets */
+    body.dark-mode .analytics-card {
+        background-color: #212b36 !important; /* Darker card background */
+        color: #f8f9fa; /* Lighter text */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    body.dark-mode .analytics-card .text-muted {
+        color: #b0b0b0 !important; /* Adjust muted text in dark mode */
+    }
+
+    body.dark-mode .analytics-card .btn-outline-primary,
+    body.dark-mode .analytics-card .btn-outline-success,
+    body.dark-mode .analytics-card .btn-outline-info {
+        background-color: transparent !important;
+        border-color: #6c757d !important;
+        color: #f8f9fa !important;
+    }
+
+    body.dark-mode .analytics-card .btn-outline-primary:hover,
+    body.dark-mode .analytics-card .btn-outline-success:hover,
+    body.dark-mode .analytics-card .btn-outline-info:hover {
+        background-color: #007bff !important;
+        color: white !important;
+        border-color: #007bff !important;
+    }
+
+    /* --- NEW CHART STYLES --- */
+    .chart-card {
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .chart-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+    }
+    .chart-card .card-header {
+        background-color: white !important; /* Ensure white background for header */
+        border-bottom: 1px solid #e9ecef !important; /* Light border */
+        border-top-left-radius: 12px; /* Match card radius */
+        border-top-right-radius: 12px; /* Match card radius */
+        font-size: 1.1rem;
+    }
+    .chart-card .card-body {
+        padding: 1.5rem;
+    }
+
+    /* Dark Mode for Charts */
+    body.dark-mode .chart-card {
+        background-color: #212b36 !important;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3) !important;
+    }
+    body.dark-mode .chart-card .card-header {
+        background-color: #2d3748 !important; /* Darker header in dark mode */
+        border-bottom-color: #3a475a !important;
+        color: #f8f9fa !important; /* Header text color */
+    }
+    /* Chart.js Global Text Colors for Dark Mode (if needed, this overrides default Chart.js colors) */
+    /* This styling should ideally be applied globally in your Chart.js config if you have a theme switcher */
+    body.dark-mode canvas {
+        /* This will not directly change chart elements like labels/axes,
+           but indicates where you might need to adjust Chart.js options dynamically. */
+    }
+</style>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Chart.js Data & Configuration ---
+
+            // Function to get appropriate chart colors based on theme
+            function getChartColors() {
+                const isDarkMode = document.body.classList.contains('dark-mode');
+                return {
+                    gridColor: isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
+                    textColor: isDarkMode ? '#f8f9fa' : '#666',
+                    tooltipBg: isDarkMode ? '#333' : 'rgba(0,0,0,0.8)',
+                    tooltipText: isDarkMode ? '#fff' : '#fff'
+                };
+            }
+
+            // --- Product Sales Chart (Bar Chart) ---
+            const productSalesCtx = document.getElementById('productSalesChart').getContext('2d');
+            const productSalesData = {
+                labels: ['Product A', 'Product B', 'Product C', 'Product D', 'Product E'],
+                datasets: [{
+                    label: 'Sản phẩm đã bán',
+                    data: [120, 90, 75, 60, 50], // Dummy sales data
+                    backgroundColor: [
+                        'rgba(13, 110, 253, 0.7)', // Primary blue
+                        'rgba(25, 135, 84, 0.7)',  // Success green
+                        'rgba(108, 117, 125, 0.7)',// Secondary gray
+                        'rgba(220, 53, 69, 0.7)',  // Danger red
+                        'rgba(255, 193, 7, 0.7)'   // Warning yellow
+                    ],
+                    borderColor: [
+                        'rgba(13, 110, 253, 1)',
+                        'rgba(25, 135, 84, 1)',
+                        'rgba(108, 117, 125, 1)',
+                        'rgba(220, 53, 69, 1)',
+                        'rgba(255, 193, 7, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            };
+
+            const productSalesChart = new Chart(productSalesCtx, {
+                type: 'bar',
+                data: productSalesData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false, // Allows flexible height based on container
+                    plugins: {
+                        legend: {
+                            display: false // No need for legend for single dataset
+                        },
+                        tooltip: {
+                            backgroundColor: getChartColors().tooltipBg,
+                            titleColor: getChartColors().tooltipText,
+                            bodyColor: getChartColors().tooltipText
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                color: getChartColors().gridColor
+                            },
+                            ticks: {
+                                color: getChartColors().textColor
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: getChartColors().gridColor
+                            },
+                            ticks: {
+                                color: getChartColors().textColor
+                            }
+                        }
+                    }
+                }
+            });
+
+            // --- Revenue Chart (Line Chart) ---
+            const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+            const revenueData = {
+                labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6'],
+                datasets: [{
+                    label: 'Doanh thu (triệu VND)',
+                    data: [80, 120, 90, 150, 130, 180], // Dummy revenue data in millions
+                    borderColor: 'rgba(25, 135, 84, 1)', // Success green
+                    backgroundColor: 'rgba(25, 135, 84, 0.2)', // Light green fill
+                    fill: true,
+                    tension: 0.4, // Makes the line curved
+                    pointRadius: 5,
+                    pointBackgroundColor: 'rgba(25, 135, 84, 1)',
+                    pointBorderColor: '#fff',
+                    pointHoverRadius: 7
+                }]
+            };
+
+            const revenueChart = new Chart(revenueCtx, {
+                type: 'line',
+                data: revenueData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            labels: {
+                                color: getChartColors().textColor
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: getChartColors().tooltipBg,
+                            titleColor: getChartColors().tooltipText,
+                            bodyColor: getChartColors().tooltipText,
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(context.parsed.y * 1000000); // Convert to actual VND
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                color: getChartColors().gridColor
+                            },
+                            ticks: {
+                                color: getChartColors().textColor
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: getChartColors().gridColor
+                            },
+                            ticks: {
+                                color: getChartColors().textColor,
+                                callback: function(value) {
+                                    return value + ' Tr VND'; // Format Y-axis labels
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Function to update chart colors on theme change
+            function updateChartColors() {
+                const colors = getChartColors();
+
+                // Product Sales Chart Update
+                productSalesChart.options.scales.x.grid.color = colors.gridColor;
+                productSalesChart.options.scales.y.grid.color = colors.gridColor;
+                productSalesChart.options.scales.x.ticks.color = colors.textColor;
+                productSalesChart.options.scales.y.ticks.color = colors.textColor;
+                productSalesChart.options.plugins.tooltip.backgroundColor = colors.tooltipBg;
+                productSalesChart.options.plugins.tooltip.titleColor = colors.tooltipText;
+                productSalesChart.options.plugins.tooltip.bodyColor = colors.tooltipText;
+                productSalesChart.update();
+
+                // Revenue Chart Update
+                revenueChart.options.scales.x.grid.color = colors.gridColor;
+                revenueChart.options.scales.y.grid.color = colors.gridColor;
+                revenueChart.options.scales.x.ticks.color = colors.textColor;
+                revenueChart.options.scales.y.ticks.color = colors.textColor;
+                revenueChart.options.plugins.legend.labels.color = colors.textColor;
+                revenueChart.options.plugins.tooltip.backgroundColor = colors.tooltipBg;
+                revenueChart.options.plugins.tooltip.titleColor = colors.tooltipText;
+                revenueChart.options.plugins.tooltip.bodyColor = colors.tooltipText;
+                revenueChart.update();
+            }
+
+            // Listen for theme changes from _AdminLayout
+            const body = document.body;
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                        if (body.classList.contains('dark-mode') || !body.classList.contains('dark-mode')) {
+                            updateChartColors();
+                        }
+                    }
+                });
+            });
+
+            observer.observe(body, { attributes: true });
+
+            // Initial update in case dark mode is already active on load
+            updateChartColors();
+        });
+    </script>
+}

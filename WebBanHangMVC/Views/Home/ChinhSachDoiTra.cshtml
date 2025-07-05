@@ -1,0 +1,166 @@
+﻿@{
+    ViewData["Title"] = "Chính Sách Đổi Trả";
+    Layout = "_Layout";
+}
+
+<style>
+    .return-policy {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+    }
+
+    .return-policy h1 {
+        color: #2c3e50;
+        font-size: 2.5em;
+        text-align: center;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+    }
+
+    .return-policy h2 {
+        color: #2980b9;
+        font-size: 1.8em;
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+
+    .return-policy p {
+        margin-bottom: 15px;
+        font-size: 1em;
+    }
+
+    .return-policy ul {
+        list-style-type: disc;
+        margin-left: 30px;
+        margin-bottom: 20px;
+    }
+
+    .return-policy ul li {
+        margin-bottom: 10px;
+    }
+
+    .return-policy ul ul {
+        list-style-type: circle;
+        margin-left: 20px;
+    }
+
+    .return-policy a {
+        color: #3498db;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .return-policy a:hover {
+        color: #e74c3c;
+        text-decoration: underline;
+    }
+
+    .return-policy p:last-child {
+        font-style: italic;
+        color: #7f8c8d;
+        text-align: center;
+        margin-top: 30px;
+    }
+</style>
+
+<div class="return-policy">
+    <h1>@ViewData["Title"]</h1>
+
+    <p>Double H Shop cam kết mang đến chính sách đổi trả linh hoạt và minh bạch nhằm đảm bảo quyền lợi tối đa cho khách hàng khi mua sắm các sản phẩm PC, linh kiện máy tính và phụ kiện. Chính sách đổi trả dưới đây được thiết kế để hỗ trợ khách hàng trong các trường hợp sản phẩm gặp sự cố hoặc không đáp ứng mong đợi. Vui lòng đọc kỹ các điều kiện và quy trình sau:</p>
+
+    <h2>1. Điều Kiện Đổi Trả</h2>
+    <p>Double H Shop chấp nhận đổi trả sản phẩm trong các trường hợp sau:</p>
+    <ul>
+        <li><strong>Lỗi do nhà sản xuất:</strong>
+            <ul>
+                <li>Sản phẩm bị lỗi kỹ thuật (phần cứng hoặc phần mềm) do nhà sản xuất, được xác nhận bởi đội ngũ kỹ thuật của Double H Shop.</li>
+                <li>Sản phẩm giao sai (sai mẫu mã, cấu hình, hoặc không đúng như mô tả trên website).</li>
+            </ul>
+        </li>
+        <li><strong>Đổi sản phẩm mới do nhu cầu khách hàng:</strong>
+            <ul>
+                <li>Áp dụng trong vòng 7 ngày kể từ ngày mua hàng (theo hóa đơn hoặc phiếu bảo hành).</li>
+                <li>Sản phẩm phải còn nguyên vẹn, chưa qua sử dụng, đầy đủ phụ kiện, bao bì và hóa đơn mua hàng.</li>
+                <li>Chỉ áp dụng cho các sản phẩm không thuộc danh mục hàng khuyến mãi hoặc giảm giá đặc biệt.</li>
+            </ul>
+        </li>
+        <li><strong>Không áp dụng đổi trả trong các trường hợp:</strong>
+            <ul>
+                <li>Sản phẩm bị hư hỏng do lỗi người dùng như rơi vỡ, va đập, tiếp xúc với nước, cháy nổ, hoặc sử dụng sai cách.</li>
+                <li>Sản phẩm đã bị tháo rời, sửa chữa bởi bên thứ ba không được ủy quyền bởi Double H Shop hoặc nhà sản xuất.</li>
+                <li>Sản phẩm không còn tem bảo hành, số serial, hoặc các dấu hiệu nhận diện bị tẩy xóa, sửa đổi.</li>
+                <li>Hết thời hạn đổi trả theo quy định (7 ngày đối với đổi sản phẩm mới, hoặc thời gian bảo hành đối với lỗi nhà sản xuất).</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>2. Quy Trình Đổi Trả</h2>
+    <p>Double H Shop cung cấp quy trình đổi trả nhanh chóng và thuận tiện như sau:</p>
+    <ul>
+        <li><strong>Bước 1: Liên hệ yêu cầu đổi trả</strong>
+            <ul>
+                <li>Khách hàng liên hệ với Double H Shop qua hotline, email, hoặc website để thông báo yêu cầu đổi trả, cung cấp mã đơn hàng và mô tả chi tiết vấn đề.</li>
+                <li>Thời gian tiếp nhận yêu cầu: Trong vòng 7 ngày kể từ ngày mua đối với đổi sản phẩm mới, hoặc trong thời gian bảo hành đối với lỗi nhà sản xuất.</li>
+            </ul>
+        </li>
+        <li><strong>Bước 2: Gửi sản phẩm về Double H Shop</strong>
+            <ul>
+                <li>Khách hàng mang sản phẩm trực tiếp đến cửa hàng hoặc gửi qua dịch vụ bưu điện đến địa chỉ được cung cấp.</li>
+                <li>Sản phẩm cần được đóng gói cẩn thận, kèm theo hóa đơn mua hàng, phiếu bảo hành (nếu có), và đầy đủ phụ kiện đi kèm.</li>
+            </ul>
+        </li>
+        <li><strong>Bước 3: Kiểm tra và xử lý</strong>
+            <ul>
+                <li>Đội ngũ kỹ thuật của Double H Shop sẽ kiểm tra sản phẩm để xác định tính hợp lệ của yêu cầu đổi trả.</li>
+                <li>Thời gian kiểm tra thường hoàn thành trong vòng 24 – 48 giờ kể từ khi nhận sản phẩm.</li>
+                <li>Nếu đủ điều kiện, sản phẩm sẽ được đổi mới hoặc sửa chữa tùy theo chính sách áp dụng.</li>
+            </ul>
+        </li>
+        <li><strong>Bước 4: Hoàn tất đổi trả</strong>
+            <ul>
+                <li>Sản phẩm đổi mới hoặc sửa chữa sẽ được trả lại cho khách hàng qua hình thức nhận trực tiếp tại cửa hàng hoặc chuyển phát qua bưu điện.</li>
+                <li>Thời gian xử lý đổi trả: Từ 3 – 7 ngày làm việc, tùy thuộc vào loại sản phẩm và tình trạng lỗi.</li>
+                <li>Khách hàng sẽ nhận được báo cáo chi tiết về kết quả xử lý đổi trả.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>3. Chính Sách Hoàn Tiền</h2>
+    <p>Hoàn tiền được áp dụng trong các trường hợp sau:</p>
+    <ul>
+        <li>Sản phẩm lỗi do nhà sản xuất và không thể sửa chữa hoặc đổi mới trong vòng 7 ngày làm việc.</li>
+        <li>Sản phẩm giao sai hoặc không đúng như mô tả, và Double H Shop không thể cung cấp sản phẩm thay thế phù hợp.</li>
+        <li>Thời gian hoàn tiền:
+            <ul>
+                <li>Chuyển khoản ngân hàng: Từ 3 – 7 ngày làm việc kể từ khi yêu cầu hoàn tiền được phê duyệt.</li>
+                <li>Ví điện tử: Từ 1 – 3 ngày làm việc.</li>
+            </ul>
+        </li>
+        <li>Khách hàng cần cung cấp thông tin tài khoản ngân hàng hoặc ví điện tử để nhận hoàn tiền.</li>
+        <li>Lưu ý: Chi phí vận chuyển (nếu có) khi gửi sản phẩm đổi trả sẽ do khách hàng chi trả, trừ trường hợp lỗi được xác nhận do nhà sản xuất.</li>
+    </ul>
+
+    <h2>4. Lưu Ý Quan Trọng</h2>
+    <ul>
+        <li>Khách hàng vui lòng kiểm tra kỹ sản phẩm trước khi nhận lại sau đổi trả để đảm bảo không có sai sót.</li>
+        <li>Double H Shop không chịu trách nhiệm đối với dữ liệu lưu trữ trên ổ cứng (HDD/SSD) hoặc các thiết bị lưu trữ khác. Vui lòng sao lưu toàn bộ dữ liệu quan trọng trước khi gửi sản phẩm đổi trả.</li>
+        <li>Sản phẩm đổi mới sẽ có thời gian bảo hành tiếp tục từ thời gian bảo hành còn lại của sản phẩm gốc hoặc tối thiểu 6 tháng (tùy thời gian nào dài hơn).</li>
+        <li>Đối với các sản phẩm khuyến mãi hoặc giảm giá đặc biệt, chính sách đổi trả có thể có một số điều kiện riêng, vui lòng kiểm tra kỹ khi mua hàng.</li>
+    </ul>
+
+    <h2>5. Liên Hệ Hỗ Trợ Đổi Trả</h2>
+    <p>Khách hàng có thể liên hệ với Double H Shop để được hỗ trợ đổi trả qua các kênh sau:</p>
+    <ul>
+        <li><strong>Hotline:</strong> 035 258 2180 (Hỗ trợ từ 8:00 – 20:00, tất cả các ngày trong tuần).</li>
+        <li><strong>Email:</strong> <a href="mailto:support@doublehshop.vn">support@doublehshop.vn</a> (Phản hồi trong vòng 24 giờ).</li>
+        <li><strong>Địa chỉ cửa hàng:</strong> [Vui lòng cung cấp địa chỉ cụ thể của Double H Shop].</li>
+        <li><strong>Website:</strong> <a href="https://www.doublehshop.vn">www.doublehshop.vn</a> (Hỗ trợ gửi yêu cầu đổi trả trực tuyến).</li>
+    </ul>
+
+    <p>Double H Shop luôn nỗ lực mang đến trải nghiệm mua sắm và dịch vụ đổi trả tốt nhất cho khách hàng. Nếu có bất kỳ thắc mắc nào về chính sách đổi trả, vui lòng liên hệ với chúng tôi để được hỗ trợ nhanh chóng và tận tình.</p>
+</div>

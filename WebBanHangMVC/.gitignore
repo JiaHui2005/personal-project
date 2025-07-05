@@ -1,0 +1,8 @@
+# Bỏ qua thư mục hệ thống VS
+.vs/
+*.user
+*.suo
+
+# Bỏ qua thư mục build
+bin/
+obj/

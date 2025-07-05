@@ -1,0 +1,311 @@
+﻿/* --- 1. BI?N CSS V? THI?T L?P CHUNG --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #dc3545;
+    --dark-color: #1a1a1a;
+    --secondary-dark: #343a40;
+    --light-color: #f8f9fa;
+    --text-color: #555;
+    --border-color: #e9ecef;
+    --font-family: 'Montserrat', sans-serif;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s ease-in-out;
+    --success-color: #28a745;
+}
+
+html {
+    font-size: 16px;
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none !important;
+    transition: var(--transition);
+}
+
+    a:hover {
+        color: #a71d2a;
+    }
+
+
+/* --- 2. HEADER --- */
+/* Top Header */
+.top-header {
+    background-color: var(--dark-color);
+    color: #ccc;
+    font-size: 0.85rem;
+    padding: 8px 0;
+    text-align: center;
+}
+
+    .top-header a {
+        color: #fff;
+        margin: 0 6px;
+    }
+
+        .top-header a:hover {
+            color: var(--primary-color);
+        }
+
+/* Main Header */
+.main-header {
+    background-color: #fff;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1020; /* D??i modal, trên n?i dung */
+}
+
+.logo-img {
+    max-height: 100%; /* ?i?u ch?nh chi?u cao logo */
+}
+
+/* Search Bar */
+.search-form .form-control {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-color: var(--border-color);
+    border-radius: 5px !important;
+}
+
+    .search-form .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: none;
+    }
+
+.search-form .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+    border-radius: 5px !important;
+}
+
+    .search-form .btn:hover {
+        background-color: #a71d2a;
+        border-color: #a71d2a;
+    }
+
+/* Header Actions (Cart, User) */
+.header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 25px;
+}
+
+    .header-actions .action-item {
+        position: relative;
+        font-size: 1.6rem;
+        color: var(--secondary-dark);
+    }
+
+        .header-actions .action-item .badge {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background-color: var(--primary-color);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 3px 6px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+        }
+
+/* --- 3. MAIN NAVIGATION (NAVBAR) --- */
+.main-navbar {
+    background-color: var(--secondary-dark);
+    padding: 0;
+}
+
+    .main-navbar .nav-link {
+        color: #fff;
+        font-weight: 600;
+        font-size: 1rem;
+        padding: 15px 20px;
+        text-transform: uppercase;
+        border-bottom: 3px solid transparent;
+    }
+
+        .main-navbar .nav-link:hover,
+        .main-navbar .nav-link.active {
+            color: #fff;
+            background-color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+
+/* --- 4. FOOTER --- */
+.main-footer {
+    background-color: var(--dark-color);
+    color: #ccc;
+    padding: 50px 0 20px 0;
+}
+
+    .main-footer h5 {
+        color: #fff;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    .main-footer ul {
+        list-style: none;
+        padding: 0;
+    }
+
+        .main-footer ul li a {
+            color: #ccc;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+            .main-footer ul li a:hover {
+                color: #fff;
+                text-decoration: underline;
+            }
+
+.footer-socials a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #444;
+    color: #fff;
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+    .footer-socials a:hover {
+        background-color: var(--primary-color);
+    }
+
+.footer-bottom {
+    border-top: 1px solid #444;
+    padding-top: 20px;
+    margin-top: 30px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* Icon dưới bên trái*/
+.floating-buttons {
+    position: fixed;
+    bottom: 50px;
+    right: 30px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.btn-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Nút tròn */
+.btn-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulse 2s infinite;
+}
+
+    .btn-icon img {
+        width: 34px;
+        height: 34px;
+    }
+
+/* Tooltip chung */
+.tooltip-box {
+    position: absolute;
+    right: 70px; /* Keeps the tooltip positioned 70px from the right */
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    white-space: nowrap;
+    font-weight: 600;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    animation: pulse 2s infinite;
+}
+
+    /* Dark Tooltip */
+    .tooltip-box.dark {
+        background-color: #000; /* Dark background */
+        color: #fff; /* Light text */
+        font-family: 'Arial', sans-serif;
+    }
+
+    /* Light Tooltip */
+    .tooltip-box.light {
+        background-color: #fff; /* Light background */
+        color: #333; /* Darker text for contrast */
+        border: 1px solid #ccc; /* Optional: Add a subtle border for the light tooltip */
+        font-family: Arial, sans-serif;
+    }
+
+        /* Arrow common styles for both dark and light tooltips */
+        .tooltip-box.dark::after,
+        .tooltip-box.light::after {
+            content: "";
+            position: absolute;
+            top: 30%; /* Adjust as needed to vertically align the arrow */
+            right: -8px; /* Positions the arrow 10px outside the right edge of the tooltip */
+            border-width: 10px 0 10px 10px;
+            border-style: solid;
+            border-color: transparent transparent transparent; /* Base transparent borders */
+        }
+
+    /* Dark Tooltip Arrow */
+    .tooltip-box.dark::after {
+        border-left-color: #000; /* Arrow color matches dark background */
+    }
+
+    /* Light Tooltip Arrow */
+    .tooltip-box.light::after {
+        border-left-color: #fff; /* Arrow color matches light background */
+    }
+
+/* Animation to nhỏ */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+
