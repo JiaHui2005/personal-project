@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\WebBanHangMVC",
+    "\\WebBanHangMVC\\Views",
+    "\\WebBanHangMVC\\Views\\Cart"
   ],
+  "SelectedNode": "\\WebBanHangMVC\\Views\\Cart\\Index.cshtml",
   "PreviewInSolutionExplorer": false
 }

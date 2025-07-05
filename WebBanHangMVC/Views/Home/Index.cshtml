@@ -5,6 +5,22 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 <link rel="stylesheet" href="@Url.Content("~/css/HomeIndex.css")" />
 
+@{
+    var userName = Context.Session.GetString("UserName");
+}
+
+<div class="container mt-4">
+    @if (!string.IsNullOrEmpty(userName))
+    {
+            <h2>Chào mừng, @userName!</h2>
+    }
+    else
+    {
+            <h2>Chào mừng bạn đến với website của chúng tôi!</h2>
+    }
+</div>
+
+
 <div class="banner">
     <div class="container">
         <div class="row g-3"> 
