@@ -2,8 +2,7 @@
 .vs/
 *.user
 *.suo
-appsetting.json
-Program.cs
+appsetting.Development.json
 
 
 # Bỏ qua thư mục build
