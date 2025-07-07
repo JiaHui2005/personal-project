@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var controller = ViewContext.RouteData.Values["Controller"]?.ToString();
+    var action = ViewContext.RouteData.Values["Action"]?.ToString();
+}
+
+<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="utf-8" />
@@ -41,42 +46,40 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="top-header">
-            <div class="container d-flex justify-content-between align-items-center">
-                <div>
-                    <span class="contact-info">
-                      <i class="bi bi-telephone-fill"></i>
-                      <strong>Hotline</strong>: <a href="#">035 258 2180</a>
-                      <strong>Tư vấn build PC:</strong> <a href="#">035 258 2180</a>
-                      <strong>Địa chỉ:</strong> <a href="#">số 19 Nguyễn Hữu Thọ, phường Tân Phong, Quận 7, TP. Hồ Chí Minh</a>
-                    </span>
-                </div>
+    <div class="top-header">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div>
+                <span class="contact-info">
+                  <i class="bi bi-telephone-fill"></i>
+                  <strong>Hotline</strong>: <a href="#">035 258 2180</a>
+                  <strong>Tư vấn build PC:</strong> <a href="#">035 258 2180</a>
+                  <strong>Địa chỉ:</strong> <a href="#">số 19 Nguyễn Hữu Thọ, phường Tân Phong, Quận 7, TP. Hồ Chí Minh</a>
+                </span>
             </div>
         </div>
+    </div>
 
-        <div class="main-header">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-3 col-md-3 col-6 d-flex align-items-center">
-                        <a asp-controller="Home" asp-action="Index" class="d-flex align-items-center text-decoration-none">
-                            <img src="/Image/logo.jpg" alt="Double H Shop Logo" class="logo-img me-2" style="margin-left: 50px; height: auto; width: 150px;" />    
+    <header class="main-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-3 col-md-3 col-6 d-flex align-items-center">
+                    <a asp-controller="Home" asp-action="Index" class="d-flex align-items-center text-decoration-none">
+                        <img src="/Image/logo.jpg" alt="Double H Shop Logo" class="logo-img me-2" style="margin-left: 50px; height: auto; width: 150px;" />    
+                    </a>
+                </div>
+                <div class="col-lg-6 col-md-5 d-none d-md-block">
+                    <form class="d-flex search-form" method="get" asp-controller="Product" asp-action="Index">
+                        <input class="form-control rounded" type="search" name="searchString" placeholder="Bạn tìm gì hôm nay...">
+                        <button class="btn rounded" type="submit"><i class="bi bi-search"></i></button>
+                    </form>
+                </div>
+    
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="header-actions">
+                        <a class="action-item" href="#" data-bs-toggle="modal" data-bs-target="#loginModal" title="Tài khoản">
+                            <i class="bi bi-person-circle"></i>
                         </a>
-                    </div>
-                    <div class="col-lg-6 col-md-5 d-none d-md-block">
-                        <form class="d-flex search-form" method="get" asp-controller="Product" asp-action="Index">
-                            <input class="form-control rounded" type="search" name="searchString" placeholder="Bạn tìm gì hôm nay...">
-                            <button class="btn rounded" type="submit"><i class="bi bi-search"></i></button>
-                        </form>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-6">
-                        <div class="header-actions">
-                            <a class="action-item" href="#" data-bs-toggle="modal" data-bs-target="#loginModal" title="Tài khoản">
-                                <i class="bi bi-person-circle"></i>
-                            </a>
                             @await Component.InvokeAsync("ShoppingCart")
-                        </div>
                     </div>
                 </div>
             </div>
@@ -118,6 +121,15 @@
         </div>
       </div>
     </div>
+
+    @if (controller == "Home" && action == "Index")
+    {
+        <div class="floating-banner-left h-100">
+            <a href="#">
+                <img src="/Image/banner-left.jpg" alt="Banner trái"/>
+            </a>
+        </div>
+    }
 
     <div class="container my-4">
         <main role="main" class="pb-4">

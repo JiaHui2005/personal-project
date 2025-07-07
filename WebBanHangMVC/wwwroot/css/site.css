@@ -65,17 +65,41 @@ a {
 
 /* Main Header */
 .main-header {
-    background-color: #fff;
-    border-bottom: 1px solid var(--border-color);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     position: sticky;
-    top: 0;
-    z-index: 1020; /* D??i modal, trên n?i dung */
+    top: 0; /* Khi cuộn tới thì nó dính top */
+    z-index: 1020;
+    background-color: white;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .logo-img {
     max-height: 100%; /* ?i?u ch?nh chi?u cao logo */
 }
+
+/*Banner*/
+.floating-banner-left {
+    position: fixed;
+    top: 25%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 999;
+    padding: 5px;
+    animation: pulse 2s infinite;
+}
+
+    .floating-banner-left img {
+        width: 150px; /* bạn có thể thay đổi chiều rộng */
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        transition: transform 0.3s;
+    }
+
+        .floating-banner-left img:hover {
+            transform: scale(1.05);
+        }
+
 
 /* Search Bar */
 .search-form .form-control {

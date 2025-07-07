@@ -6,7 +6,7 @@ using WebBanHangMVC.Models; // Thay YourProjectName bằng namespace của dự 
 
 namespace WebBanHangMVC.Controllers
 {
-    [Route("Admin/[controller]")] // Định tuyến cho Controller này
+    //[Route("Admin/[controller]")] // Định tuyến cho Controller này
     public class ProductController : Controller
     {
         // Sử dụng dữ liệu giả

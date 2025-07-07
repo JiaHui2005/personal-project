@@ -6,39 +6,424 @@
     var imageUrl = "/Image/test.jpg";
     var price = 13500000;
     var oldPrice = 15000000;
-    var warrantyMonths = 24;
     var description = "Bộ PC mạnh mẽ phù hợp chơi game và thiết kế đồ họa. Trang bị CPU Intel Core i5 thế hệ 12, RAM 16GB DDR4, card đồ họa RTX 3060 12GB mạnh mẽ.";
     var productId = 1;
+
+    var ramOptions = new List<string> { "8GB", "16GB", "32GB" };
+    var cpuOptions = new List<string> { "i5", "i7", "i9" };
+    var ssdOptions = new List<string> { "512GB", "1TB", "2TB" };
 }
 
-<div class="container py-4">
+<style>
+    .container.product-layout {
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 30px;
+        margin: 12px 0;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .product-image {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        background-color: #e9ecef;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #6c757d;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .product-image img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .product-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 10px;
+        line-height: 1.3;
+    }
+
+    /* --- New/Modified CSS for Price Alignment --- */
+    .price-group { /* New class to wrap current and old price */
+        display: flex;
+        align-items: baseline; /* Aligns content to the baseline, good for different font sizes */
+        gap: 15px; /* Space between current and old price */
+        margin-bottom: 15px; /* Keep consistent spacing below the price line */
+    }
+
+    .price {
+        color: #e63946;
+        font-size: 1.8rem;
+        font-weight: 700;
+        /* Removed margin-right as gap handles spacing now */
+    }
+
+    .old-price {
+        color: #99aab5;
+        text-decoration: line-through;
+        font-size: 1.1rem;
+        /* Removed margin-left as gap handles spacing now */
+    }
+    /* --- End New/Modified CSS --- */
+
+
+    .description {
+        margin: 12px 0;
+        color: #495057;
+        line-height: 1.6;
+        font-size: 1rem;
+    }
+
+    .option-group {
+        margin-bottom: 20px;
+    }
+
+    .option-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: #343a40;
+        font-size: 1.05rem;
+    }
+
+    .option-buttons {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .option-buttons button {
+        background-color: #fff;
+        border: 1px solid #000;
+        padding: 4px 16px;
+        cursor: pointer;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .option-buttons button:hover {
+        border: 2px solid #2ecc71;
+        color: #2ecc71;
+    }
+
+    /* Optional: Add a class for selected buttons if you implement selection logic with JavaScript */
+    .option-buttons button.selected {
+        background-color: #2ecc71;
+        color: white;
+        border: 1px solid #000;
+        box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
+    }
+
+
+    .btn-add-cart {
+        background: linear-gradient(135deg, #27ae60, #2ecc71);
+        border: none;
+        color: #fff;
+        font-weight: 600;
+        padding: 16px;
+        width: 100%;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn-add-cart:hover {
+        background: linear-gradient(135deg, #219653, #1e874b);
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(39, 174, 96, 0.5);
+    }
+
+    /* Responsive Adjustments */
+    @@media (max-width: 768px) {
+        .container.product-layout {
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .product-title {
+            font-size: 1.6rem;
+        }
+
+        .price-group { /* Ensure it still works on mobile */
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 1.5rem;
+        }
+
+        .old-price {
+            font-size: 1rem;
+        }
+
+        .description {
+            margin: 15px 0;
+        }
+
+        .option-group label {
+            margin-bottom: 8px;
+        }
+
+        .option-buttons {
+            gap: 8px;
+        }
+
+        .option-buttons button {
+            padding: 6px 14px;
+            font-size: 0.9rem;
+        }
+
+        .btn-add-cart {
+            padding: 10px 20px;
+            font-size: 1rem;
+            margin-top: 20px;
+            max-width: none;
+        }
+
+        .product-layout .row > div {
+            flex-basis: 100%;
+        }
+
+        .product-layout .col-md-6:first-child {
+            margin-bottom: 25px;
+        }
+
+        /* If you still want to reorder for mobile, you'd adjust this section: */
+        .d-flex.justify-content-between.align-items-start.mb-2 {
+            flex-direction: column;
+            align-items: flex-start !important;
+        }
+        /* Remove or adjust these if you don't want the title/price reorder on mobile anymore */
+        .product-title {
+            order: 1;
+            margin-bottom: 5px;
+        }
+        /* The price-group will now contain both, so its order might be 2 */
+        .price-group {
+            order: 2;
+        }
+    }
+
+    /* Even smaller screens */
+    @@media (max-width: 480px) {
+        .container.product-layout {
+            padding: 15px;
+        }
+
+        .product-title {
+            font-size: 1.4rem;
+        }
+
+        .price {
+            font-size: 1.3rem;
+        }
+
+        .option-buttons button {
+            padding: 5px 10px;
+            font-size: 0.85rem;
+        }
+
+        .btn-add-cart {
+            font-size: 0.95rem;
+        }
+    }
+
+    .product-specs {
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 30px;
+        margin: 12px 0;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .product-desc h4,
+    .product-table h4,
+    .product-upgrade h5 {
+        color: #000;
+        border-bottom: 2px solid #000;
+    }
+
+    .product-desc p {
+        color: #000;
+        font-weight: 500;
+    }
+
+    .table {
+        background-color: #fff;
+        color: #000;
+    }
+
+    .table thead {
+        background-color: #f0f0f0;
+    }
+
+    .table th,
+    .table td {
+        border: 1px solid #000;
+        background: #fff;
+    }
+
+    .product-upgrade ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    .product-upgrade li {
+        color: #000;
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
+
+    /* Ensure text-danger class uses black instead of red */
+    .text-danger {
+        color: #000 !important;
+    }
+
+    /* Optional: Add subtle hover effects for interactivity */
+    .table tbody tr:hover {
+        background-color: #e0e0e0;
+    }
+
+</style>
+
+<div class="container product-layout">
     <div class="row">
-        <!-- Hình ảnh sản phẩm -->
         <div class="col-md-6">
-            <img src="@imageUrl" alt="@productName" class="img-fluid rounded shadow-sm w-100">
+            <div class="product-image">
+                <img src=@imageUrl class="h-100"/>
+             </div>
         </div>
 
-        <!-- Thông tin sản phẩm -->
         <div class="col-md-6">
-            <h2 class="fw-bold mb-3">@productName</h2>
-
-            <div class="mb-2">
-                <span class="text-danger fs-4 fw-semibold">@String.Format("{0:N0}đ", price)</span>
-                @if (oldPrice > price)
-                {
-                        <span class="text-muted text-decoration-line-through ms-2">@String.Format("{0:N0}đ", oldPrice)</span>
-                }
+            <div class="product-title">@productName</div>
+            <div class="price-group">
+                <div class="price">@String.Format("{0:N0}đ", price)</div>
+                <div class="old-price">@String.Format("{0:N0}đ", oldPrice)</div>
             </div>
 
-            <div class="mb-3">
-                <span class="badge bg-success">Bảo hành: @warrantyMonths tháng</span>
+            <div class="description">Miêu tả: @description</div>
+
+            <div class="option-group">
+                <label>Ram:</label>
+                <div class="option-buttons">
+                    @foreach (var ram in ramOptions)
+                    {
+                            <button type="button">@ram</button>
+                    }
+                </div>
             </div>
 
-            <p class="text-muted">@description</p>
+            <div class="option-group">
+                <label>CPU:</label>
+                <div class="option-buttons">
+                    @foreach (var cpu in cpuOptions)
+                    {
+                            <button type="button">@cpu</button>
+                    }
+                </div>
+            </div>
 
-            <button class="btn btn-primary mt-3" onclick="addToCart(this, @productId)">
-                <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ hàng
+            <div class="option-group">
+                <label>SSD:</label>
+                <div class="option-buttons">
+                    @foreach (var ssd in ssdOptions)
+                    {
+                            <button type="button">@ssd</button>
+                    }
+                </div>
+            </div>
+
+            <button class="btn btn-add-cart">
+                Thêm vào giỏ hàng
             </button>
         </div>
     </div>
 </div>
+
+<div class="container product-specs mt-2">
+    <div class="product-desc mb-4">
+        <h4 class="fw-bold border-bottom border-dark border-2 pb-1">MÔ TẢ SẢN PHẨM</h4>
+        <p class="text-danger fw-semibold mb-1">*** Khách hàng có thể lựa chọn mã VGA MSI RTX 3060 VENTUS 2X OC 12GB</p>
+        <p class="text-danger fw-semibold mb-1">Hoặc VGA Asus DUAL RTX 3060-12G-GAMING V2</p>
+        <p class="text-danger fw-semibold mb-1">Hoặc VGA Gigabyte GeForce RTX 3060 WINDFORCE OC 12GB</p>
+        <p class="text-danger fw-semibold mb-1">Tất cả đều ALL NEW - Bảo hành 36 tháng</p>
+        <p class="text-danger fw-semibold">Bộ PC này đang áp dụng KM SHOCK - Nên sẽ không áp dụng KM chung khác</p>
+    </div>
+
+    <div class="product-table mb-4">
+        <h4 class="fw-bold border-bottom border-dark border-2 pb-1 mb-3">Thông số kỹ thuật</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered text-center align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>STT</th>
+                        <th>Mô tả thiết bị</th>
+                        <th>SL</th>
+                        <th>BH</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>CPU Intel Core i5-12400F (Up To 4.40GHz, 6 Nhân 12 Luồng, 18MB Cache, Socket 1700, Alder Lake)- Tray</td><td>1</td><td>36th</td></tr>
+                    <tr><td>2</td><td>Mainboard ASUS B760M -K DDR4</td><td>1</td><td>36th</td></tr>
+                    <tr><td>3</td><td>RAM OCPC XT II 16GB BUS 3200MHz DDR4 BLAC</td><td>1</td><td>36th</td></tr>
+                    <tr><td>4</td><td>Ổ cứng SSD OCPC MFL-300 512GB NVMe Gen 3x4</td><td>1</td><td>36th</td></tr>
+                    <tr><td>5</td><td>VGA MSI RTX 3060 VENTUS 2X OC 12GB hoặc VGA Gigabyte GeForce RTX 3060 WINDFORCE OC 12GB hoặc Card màn hình Asus DUAL RTX 3060-12G-GAMING V2</td><td>1</td><td>36th</td></tr>
+                    <tr><td>6</td><td>NGUỒN AIGO VK650 - 650W (80 PLUS/ ACTIVE PFC/ SINGLE RAIL)</td><td>1</td><td>36th</td></tr>
+                    <tr><td>7</td><td>CASE XIGMATEK CUBI M - Tặng kèm Pack 3Fan RGB</td><td>1</td><td>12th</td></tr>
+                    <tr><td>8</td><td>Tản nhiệt khí Jonsbo CR-1000 RGB</td><td>1</td><td>12th</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="product-upgrade">
+        <h5 class="text-danger fw-bold border-bottom border-dark border-2 pb-1">Upgrade</h5>
+        <ul class="text-danger">
+            <li>Upgrade lên SSD 1TB thêm 790K</li>
+            <li>Upgrade lên 32GB Ram thêm 1 triệu</li>
+            <li>Upgrade lên i5 13400F thêm 890K</li>
+            <li>Upgrade lên i5 12600KF thêm 1690K</li>
+            <li>Upgrade lên i5 14500 thêm 3.590K</li>
+            <li>Upgrade lên tản nhiệt nước AIO 240 thêm 990K</li>
+            <li>Upgrade lên Mainboard Wifi + Bluetooth thêm 890K</li>
+            <li>Upgrade Card mạng Tplink PCIe Archer TX20E (AX1800, Bluetooth 5.2) thêm 590K</li>
+            <li>Upgrade lên Mainboard Asus B760M-AYW WIFI DDR4 thêm 690K</li>
+        </ul>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>
+        document.querySelectorAll('.option-buttons').forEach(group => {
+            group.querySelectorAll('button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const isSelected = button.classList.contains('selected');
+
+                    // Bỏ hết class 'selected' khỏi các nút trong nhóm
+                    group.querySelectorAll('button').forEach(btn => btn.classList.remove('selected'));
+
+                    // Nếu nút này chưa được chọn → thêm class 'selected'
+                    // Nếu đã được chọn → không thêm lại (toggle bỏ chọn)
+                    if (!isSelected) {
+                        button.classList.add('selected');
+                    }
+                });
+            });
+        });
+    </script>
+}
+
